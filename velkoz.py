@@ -8,7 +8,8 @@ from riotwatcher import RiotWatcher, LoLException, error_404, error_429
 token_file = open("slack_token", "r")
 
 # instantiate Slack & Twilio clients
-token = token_file.readline()
+token = token_file.readline().rstrip()
+print token
 slack_client = SlackClient(token)
 
 #get Bot ID after slack token
