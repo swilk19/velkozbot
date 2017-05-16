@@ -42,7 +42,7 @@ def handle_command(command, channel):
         if current_input[0] == "add":
             response = add_summoner(command)
         elif current_input[0] == "remove":
-            response = print_list()
+            response = remove_summoner(command)
         elif current_input[0] == "print":
             response = print_list()
         else:
