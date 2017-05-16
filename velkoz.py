@@ -6,6 +6,12 @@ from riotwatcher import RiotWatcher, LoLException, error_404, error_429
 
 # starterbot's ID as an environment variable
 token_file = open("slack_token", "r")
+
+# instantiate Slack & Twilio clients
+token = token_file.readline()
+slack_client = SlackClient(token)
+
+#get Bot ID after slack token
 BOT_ID = token_file.readline()
 BOT_ID = BOT_ID.rstrip()
 #BOT_ID = os.environ.get("BOT_ID")
@@ -15,10 +21,6 @@ print "Starting with BOT_ID = '" + BOT_ID +"'"
 
 AT_BOT = "<@" + BOT_ID + ">"
 COMMAND_LIST = ["add", "print", "remove"]
-
-# instantiate Slack & Twilio clients
-token = token_file.readline()
-slack_client = SlackClient(token)
 
 #Get Rito games client
 riot_token = open("riot_token","r").readline().rstrip()
