@@ -2,11 +2,10 @@ import os
 import time
 from slackclient import SlackClient
 from riotwatcher import RiotWatcher, LoLException, error_404, error_429
-from lxml import html
-from lxml import etree
+#from lxml import html
+#from lxml import etree
 from bs4 import BeautifulSoup
 import requests
-import json
 
 # starterbot's ID as an environment variable
 token_file = open("slack_token", "r")
@@ -71,8 +70,9 @@ def scrape_pbe_changes():
     #plan to accept "all", a champion name, or "items"
     print "Starting S@20 Scrap"
     page = requests.get(PBE_CHANGE_URL)
-    tree = html.fromstring(page.content)
-    soup = BeautifulSoup(etree.tostring(tree, pretty_print=True), 'html.parser')
+    #tree = html.fromstring(page.content)
+    #soup = BeautifulSoup(etree.tostring(tree, pretty_print=True), 'html.parser')
+    soup = BeautifulSoup(page.content)
     #print(etree.tostring(tree, pretty_print=True))
     #print tree
     soup = soup.find(id="news")
